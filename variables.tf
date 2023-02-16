@@ -1,47 +1,47 @@
 variable "region" {
-    default = "us-east-1"
+  default = "us-east-1"
 }
 
 variable "environment" {
-    default = "demo"
+  default = "demo"
 }
 
 variable "vpc_cidr_block" {
-    default = "10.0.0.0/16"
+  default = "10.0.0.0/16"
 }
 
 variable "vpc_instance_tenancy" {
-    default = "default"
+  default = "default"
 }
 
 variable "subnet_count" {
-    default = 3
+  default = 3
 }
 
 variable "subnet_bits" {
-    default = 8
+  default = 8
 }
 
 variable "vpc_name" {
-    default = "vpc1"
+  default = "vpc1"
 }
 
 variable "vpc_internet_gateway_name" {
-    default = "vpc1IG"
+  default = "vpc1IG"
 }
 
 variable "vpc_public_subnet_name" {
-    default = "vpc1PublicSubnet"
+  default = "vpc1PublicSubnet"
 }
 
 variable "vpc_public_rt_name" {
-    default = "vpc1PublicRT"
+  default = "vpc1PublicRT"
 }
 
 variable "vpc_private_subnet_name" {
-    default = "vpc1PrivateSubnet"
+  default = "vpc1PrivateSubnet"
 }
 
 variable "vpc_private_rt_name" {
-    default = "vpc1PrivateRT"
+  default = "vpc1PrivateRT"
 }
