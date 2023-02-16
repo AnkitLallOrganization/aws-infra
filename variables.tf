@@ -11,7 +11,7 @@ variable "vpc_cidr_block" {
 }
 
 variable "vpc_instance_tenancy" {
-  default = "default"
+    default = "default"
 }
 
 variable "subnet_count" {
