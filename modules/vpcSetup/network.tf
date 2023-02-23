@@ -7,6 +7,10 @@ resource "aws_vpc" "vpc" {
   }
 }
 
+output "vpc_id" {
+  value = aws_vpc.vpc.id
+}
+
 resource "aws_internet_gateway" "internet-gateway" {
   vpc_id = aws_vpc.vpc.id
 
@@ -27,6 +31,10 @@ resource "aws_subnet" "public-subnet" {
   tags = {
     Name = "${var.public_subnet_name}-${count.index + 1}"
   }
+}
+
+output "subnet_ids" {
+  value = aws_subnet.public-subnet.*.id
 }
 
 resource "aws_route_table" "public-route-table" {
