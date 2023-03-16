@@ -6,6 +6,7 @@ resource "aws_instance" "app_server" {
   key_name             = var.ami_key_pair_name
   security_groups      = ["${var.sec_id}"]
   iam_instance_profile = var.ec2_profile_name
+  disable_api_termination = true
 
   tags = {
     Name = "EC2-${var.ami_id}"
@@ -34,4 +35,12 @@ resource "aws_instance" "app_server" {
   EOF
 
   subnet_id = var.subnet_ids[0]
+}
+
+resource "aws_route53_record" "a_record" {
+  zone_id = var.zone_id
+  name    = var.rec_name
+  type    = "A"
+  ttl     = 60
+  records = [aws_instance.app_server.public_ip]
 }

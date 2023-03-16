@@ -77,7 +77,6 @@ variable "username" {
   default = "csye6225"
 }
 variable "password" {
-  default = "Asdfghjklz13"
 }
 variable "engine_version" {
   default = "8.0"
@@ -92,4 +91,14 @@ variable "db_name" {
 
 variable "db_port" {
   default = 3306
+}
+
+// DNS
+
+variable "zone_id" {
+  type = string
+}
+
+variable "rec_name" {
+  type = string
 }
