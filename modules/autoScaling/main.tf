@@ -2,22 +2,30 @@
 data "template_file" "user_data" {
 
   template = <<EOF
-        #!/bin/bash
-        cd /home/ec2-user/webapp
-        echo DBHOST="${var.host_name}" > .env
-        echo DBUSER="${var.username}" >> .env
-        echo DBPASS="${var.password}" >> .env
-        echo DATABASE="${var.db_name}" >> .env
-        echo PORT=${var.app_port} >> .env
-        echo DBPORT=${var.db_port} >> .env
-        echo BUCKETNAME=${var.s3_bucket} >> .env
+    #!/bin/bash
+    cd /home/ec2-user/webapp
+    echo DBHOST="${var.host_name}" > .env
+    echo DBUSER="${var.username}" >> .env
+    echo DBPASS="${var.password}" >> .env
+    echo DATABASE="${var.db_name}" >> .env
+    echo PORT=${var.app_port} >> .env
+    echo DBPORT=${var.db_port} >> .env
+    echo BUCKETNAME=${var.s3_bucket} >> .env
 
-        sudo systemctl daemon-reload
-        sudo systemctl start webapp.service
-        sudo systemctl enable webapp.service 
+    sudo chown -R root:ec2-user /var/log   
+    sudo chmod -R 770 -R /var/log
 
-        systemctl start amazon-cloudwatch-agent.service
-        systemctl enable amazon-cloudwatch-agent.service
+    sudo systemctl daemon-reload
+    sudo systemctl start webapp.service
+    sudo systemctl enable webapp.service   
+
+    systemctl enable amazon-cloudwatch-agent.service 
+
+    sudo ../../../opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+        -a fetch-config \
+        -m ec2 \
+        -c file:./cloudwatch/cloudwatch-config.json \
+        -s
     EOF
 
 }
