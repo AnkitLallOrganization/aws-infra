@@ -1,0 +1,6 @@
+region      = "us-east-1"
+environment = "demo"
+ami_id      = "ami-08bd2bbf8b6d047fe"
+zone_id     = "Z08756073PTSG1FH8VJIJ"
+rec_name    = "demo.ankitlall.me"
+password    = "Asdfghjklz123"
