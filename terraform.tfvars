@@ -1,6 +1,0 @@
-region      = "us-east-1"
-environment = "demo"
-ami_id      = "ami-0cb5ddd1474a8e3ff"
-zone_id     = "Z08756073PTSG1FH8VJIJ"
-rec_name    = "demo.ankitlall.me"
-password    = "Asdfghjklz123"
