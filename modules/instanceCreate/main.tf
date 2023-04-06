@@ -30,7 +30,9 @@ resource "aws_instance" "app_server" {
 
     sudo systemctl daemon-reload
     sudo systemctl start webapp.service
-    sudo systemctl enable webapp.service    
+    sudo systemctl enable webapp.service   
+
+    systemctl start amazon-cloudwatch-agent.service 
 
   EOF
 
