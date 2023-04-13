@@ -81,3 +81,7 @@ aws_route_table_association
     WebAppS3 the policy will allow EC2 instances to perform S3 buckets. This is required for applications on your EC2 instance to talk to the S3 bucket.
     Create an IAM role EC2-CSYE6225 for the EC2 service and attach the WebAppS3 policy to it. You will attach this role to your EC2 instance.
     DNS, Route 53, dev and demo records
+
+    Command to import certificate to AWS Certificate Manager
+
+    aws acm import-certificate --certificate fileb://certificate.crt --private-key fileb://private.key --profile=demo
